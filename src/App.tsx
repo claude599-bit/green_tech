@@ -26,7 +26,7 @@ import { ShieldAlert } from 'lucide-react';
 
 function AppContent() {
   const { user, loading } = useAuth();
-  const [currentView, setCurrentView] = useState<string>('/');
+  const [currentView, setCurrentView] = useState<string>(() => window.location.pathname || '/');
   const [assistantOpen, setAssistantOpen] = useState(false);
 
   // Sync with browser URL / history for natural navigation
