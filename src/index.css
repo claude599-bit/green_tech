@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-gtec-forest: #075B35;
+    --color-gtec-deep: #063D2A;
+    --color-gtec-energy: #69B536;
+    --color-gtec-ivory: #F5F7F1;
+    --color-gtec-charcoal: #202622;
+  }
+}
+
+.font-display {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-body {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}

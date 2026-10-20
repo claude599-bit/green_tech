@@ -1,0 +1,6 @@
+{
+  "name": "Green Tech Energy Cameroon (GTEC)",
+  "description": "Plateforme web professionnelle GTEC reliant clients, techniciens et administration pour le génie électrique, solaire, climatisation, informatique et BTP durable au Cameroun.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

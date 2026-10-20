@@ -1,0 +1,6 @@
+{
+  "summary": "Plan d'architecture et de mise en œuvre de la plateforme GTEC (Green Tech Energy Cameroon) comprenant :\n- Site public vitrine et conversion avec charte graphique vert profond / énergie\n- Espaces connectés distincts et sécurisés par rôle : Client, Technicien, Administrateur GTEC\n- Backend Express complet avec base de données relationnelle persistante et sessions sécurisées\n- Workflow métier de bout en bout (demande -> qualification -> attribution -> intervention -> rapport -> validation)\n- Assistant IA multimodal Gemini avec mode thinking élevé (gemini-4-argon, gemini-3.8-flash, gemini-3.1-flash-lite)\n- Profils et données réelles préconfigurées pour test immédiat des 3 rôles.",
+  "updatedAt": "2026-10-19T19:35:56.894787606Z",
+  "requestFeedback": true,
+  "userFacing": true
+}

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green Tech Energy Cameroon (GTEC)</title>
+    <meta name="description" content="Plateforme web professionnelle GTEC reliant clients, techniciens et administration pour le génie électrique, solaire, climatisation, informatique et BTP durable au Cameroun." />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <meta name="theme-color" content="#063D2A" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="GTEC" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta property="og:title" content="Green Tech Energy Cameroon (GTEC)" />
+    <meta property="og:description" content="Plateforme web professionnelle GTEC reliant clients, techniciens et administration pour le génie électrique, solaire, climatisation, informatique et BTP durable au Cameroun." />
+    <meta property="og:image" content="/logo.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script>
+      // Capture immédiate de l'événement d'installation Android/Chrome dès l'en-tête
+      window.gtecDeferredPrompt = null;
+      window.addEventListener('beforeinstallprompt', function(e) {
+        e.preventDefault();
+        window.gtecDeferredPrompt = e;
+        window.dispatchEvent(new CustomEvent('gtec-pwa-installable'));
+      });
+    </script>
+  </head>
+  <body class="bg-[#F5F7F1] text-[#202622] font-['Manrope',sans-serif] antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

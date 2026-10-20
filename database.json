@@ -1,0 +1,830 @@
+{
+  "users": [
+    {
+      "id": "usr-admin-1",
+      "email": "admin@greentech-cm.com",
+      "passwordHash": "admin123",
+      "role": "admin",
+      "name": "Danielle Eboa (Supervision GTEC)",
+      "phone": "+237 6 55 54 76 49",
+      "city": "Douala",
+      "status": "actif",
+      "createdAt": "2026-01-01T08:00:00Z"
+    },
+    {
+      "id": "usr-client-1",
+      "email": "martial.t@gmail.com",
+      "passwordHash": "client123",
+      "role": "client",
+      "name": "Martial Tene",
+      "phone": "+237 6 77 12 34 56",
+      "clientType": "particulier",
+      "city": "Douala",
+      "status": "actif",
+      "createdAt": "2026-02-10T10:30:00Z"
+    },
+    {
+      "id": "usr-client-2",
+      "email": "direction@agrocam.cm",
+      "passwordHash": "client123",
+      "role": "client",
+      "name": "Dr. Paul Manga",
+      "phone": "+237 6 99 88 77 66",
+      "clientType": "entreprise",
+      "companyName": "AgroCam Industries SA",
+      "city": "Douala",
+      "status": "actif",
+      "createdAt": "2026-02-15T09:00:00Z"
+    },
+    {
+      "id": "usr-tech-1",
+      "email": "fabrice.kamga@gtec-tech.cm",
+      "passwordHash": "tech123",
+      "role": "technicien",
+      "name": "Fabrice Kamga",
+      "phone": "+237 6 51 22 33 44",
+      "status": "actif",
+      "skills": [
+        "solaire_electrique",
+        "genie_electrique"
+      ],
+      "experienceYears": 7,
+      "zones": [
+        "Douala",
+        "Edéa",
+        "Kribi"
+      ],
+      "availability": "disponible",
+      "rating": 4.9,
+      "city": "Douala",
+      "createdAt": "2026-01-15T11:00:00Z"
+    },
+    {
+      "id": "usr-tech-2",
+      "email": "samuel.ndongo@gtec-tech.cm",
+      "passwordHash": "tech123",
+      "role": "technicien",
+      "name": "Samuel Ndongo",
+      "phone": "+237 6 58 44 55 66",
+      "status": "actif",
+      "skills": [
+        "froid_climatisation"
+      ],
+      "experienceYears": 5,
+      "zones": [
+        "Yaoundé",
+        "Mbalmayo"
+      ],
+      "availability": "disponible",
+      "rating": 4.8,
+      "city": "Yaoundé",
+      "createdAt": "2026-01-20T14:00:00Z"
+    },
+    {
+      "id": "usr-tech-3",
+      "email": "aicha.bello@gtec-tech.cm",
+      "passwordHash": "tech123",
+      "role": "technicien",
+      "name": "Aïcha Bello",
+      "phone": "+237 6 70 11 22 33",
+      "status": "actif",
+      "skills": [
+        "informatique_reseau"
+      ],
+      "experienceYears": 6,
+      "zones": [
+        "Douala",
+        "Yaoundé"
+      ],
+      "availability": "disponible",
+      "rating": 4.95,
+      "city": "Douala",
+      "createdAt": "2026-02-01T08:30:00Z"
+    },
+    {
+      "id": "usr-tech-pending",
+      "email": "herve.mbarga@gmail.com",
+      "passwordHash": "tech123",
+      "role": "technicien",
+      "name": "Hervé Mbarga",
+      "phone": "+237 6 75 99 88 11",
+      "status": "en_attente_validation",
+      "skills": [
+        "genie_civil"
+      ],
+      "experienceYears": 4,
+      "zones": [
+        "Bafoussam",
+        "Ouest"
+      ],
+      "availability": "disponible",
+      "city": "Bafoussam",
+      "createdAt": "2026-03-01T15:20:00Z"
+    }
+  ],
+  "serviceCategories": [
+    {
+      "id": "cat-solar",
+      "slug": "solaire_electrique",
+      "title": "Génie Électrique & Solaire Photovoltaïque",
+      "subtitle": "Systèmes autonomes, hybrides, onduleurs industriels & distribution basse/moyenne tension",
+      "description": "Conception, dimensionnement et installation certifiée de centrales solaires pour entreprises et résidences au Cameroun. Dépannage d’onduleurs et audits de charge énergétique.",
+      "icon": "Sun",
+      "skillsRequired": [
+        "solaire_electrique",
+        "genie_electrique"
+      ]
+    },
+    {
+      "id": "cat-hvac",
+      "slug": "froid_climatisation",
+      "title": "Froid Industriel & Climatisation Haute Performance",
+      "subtitle": "Chambres froides positives/négatives, VRV/VRF et systèmes frigorifiques commerciaux",
+      "description": "Maintenance préventive, dépannage d’urgence 24/7 et installation de centrales frigorifiques agroalimentaires et médicales avec fluides frigorigènes écologiques.",
+      "icon": "Snowflake",
+      "skillsRequired": [
+        "froid_climatisation"
+      ]
+    },
+    {
+      "id": "cat-it",
+      "slug": "informatique_reseau",
+      "title": "Génie Informatique & Réseaux Télécoms",
+      "subtitle": "Câblage structuré cuivre/fibre, serveurs, vidéosurveillance IP & cybersécurité",
+      "description": "Architecture réseau d’entreprise, baies de brassage, liaisons inter-sites, contrôle d’accès biométrique et alimentation secourue (onduleurs en ligne).",
+      "icon": "Server",
+      "skillsRequired": [
+        "informatique_reseau"
+      ]
+    },
+    {
+      "id": "cat-civil",
+      "slug": "genie_civil",
+      "title": "Génie Civil & BTP Durable",
+      "subtitle": "Ouvrages techniques, réhabilitation énergétique et superstructures éco-responsables",
+      "description": "Travaux de fondations spéciales pour mats solaires, aménagements de salles techniques et réhabilitation thermique du bâti selon les normes tropicales.",
+      "icon": "Building2",
+      "skillsRequired": [
+        "genie_civil"
+      ]
+    }
+  ],
+  "serviceRequests": [
+    {
+      "id": "req-001",
+      "reference": "GTEC-2026-E042",
+      "clientId": "usr-client-1",
+      "clientName": "Martial Tene",
+      "clientPhone": "+237 6 77 12 34 56",
+      "clientEmail": "martial.t@gmail.com",
+      "clientType": "particulier",
+      "categoryId": "cat-solar",
+      "categoryTitle": "Génie Électrique & Solaire Photovoltaïque",
+      "title": "Installation Kit Solaire Hybride 5kVA avec stockage lithium",
+      "description": "Besoin d’autonomie électrique pour une résidence à Bonanjo suite aux coupures récurrentes. Alimentation continue pour climatisation salon, frigo et éclairage.",
+      "serviceType": "installation",
+      "urgency": "normale",
+      "city": "Douala",
+      "district": "Bonanjo",
+      "coordinates": {
+        "lat": 4.0435,
+        "lng": 9.689
+      },
+      "preferredDate": "2026-03-25",
+      "preferredContact": "whatsapp",
+      "status": "terminee",
+      "assignedTechnicianId": "usr-tech-1",
+      "assignedTechnicianName": "Fabrice Kamga",
+      "assignedTechnicianPhone": "+237 6 51 22 33 44",
+      "scheduledDate": "2026-03-26",
+      "scheduledTimeSlot": "09h00 - 15h00",
+      "history": [
+        {
+          "status": "nouvelle",
+          "timestamp": "2026-03-10T08:15:00Z",
+          "authorId": "usr-client-1",
+          "authorName": "Martial Tene",
+          "authorRole": "client",
+          "comment": "Demande soumise en ligne"
+        },
+        {
+          "status": "qualifiee",
+          "timestamp": "2026-03-10T10:00:00Z",
+          "authorId": "usr-admin-1",
+          "authorName": "Danielle Eboa",
+          "authorRole": "admin",
+          "comment": "Dossier validé pour étude sur site"
+        },
+        {
+          "status": "technicien_attribue",
+          "timestamp": "2026-03-11T09:00:00Z",
+          "authorId": "usr-admin-1",
+          "authorName": "Danielle Eboa",
+          "authorRole": "admin",
+          "comment": "Assigné à Fabrice Kamga (expert certifié)"
+        },
+        {
+          "status": "mission_acceptee",
+          "timestamp": "2026-03-11T10:30:00Z",
+          "authorId": "usr-tech-1",
+          "authorName": "Fabrice Kamga",
+          "authorRole": "technicien",
+          "comment": "Mission confirmée par le technicien"
+        },
+        {
+          "status": "terminee",
+          "timestamp": "2026-03-26T16:00:00Z",
+          "authorId": "usr-tech-1",
+          "authorName": "Fabrice Kamga",
+          "authorRole": "technicien",
+          "comment": "Installation finalisée avec succès et PV de réception signé"
+        }
+      ],
+      "createdAt": "2026-03-10T08:15:00Z",
+      "updatedAt": "2026-03-26T16:00:00Z"
+    },
+    {
+      "id": "req-002",
+      "reference": "GTEC-2026-F089",
+      "clientId": "usr-client-2",
+      "clientName": "Dr. Paul Manga",
+      "companyName": "AgroCam Industries SA",
+      "clientPhone": "+237 6 99 88 77 66",
+      "clientEmail": "direction@agrocam.cm",
+      "clientType": "entreprise",
+      "categoryId": "cat-hvac",
+      "categoryTitle": "Froid Industriel & Climatisation Haute Performance",
+      "title": "Urgence panne compresseur chambre froide stockage fruits",
+      "description": "Le groupe froid n°2 de la chambre froide positive (40m³) s’est arrêté avec alarme haute pression. Température en hausse critique, risque de perte sur les mangues.",
+      "serviceType": "depannage",
+      "urgency": "critique",
+      "city": "Douala",
+      "district": "Zone Industrielle Bassa",
+      "coordinates": {
+        "lat": 4.062,
+        "lng": 9.754
+      },
+      "preferredDate": "2026-10-20",
+      "preferredContact": "telephone",
+      "status": "en_cours",
+      "assignedTechnicianId": "usr-tech-1",
+      "assignedTechnicianName": "Fabrice Kamga",
+      "assignedTechnicianPhone": "+237 6 51 22 33 44",
+      "scheduledDate": "2026-10-20",
+      "scheduledTimeSlot": "14h00",
+      "history": [
+        {
+          "status": "nouvelle",
+          "timestamp": "2026-10-19T07:30:00Z",
+          "authorId": "usr-client-2",
+          "authorName": "Dr. Paul Manga",
+          "authorRole": "client",
+          "comment": "Alerte urgence chambre froide"
+        },
+        {
+          "status": "qualifiee",
+          "timestamp": "2026-10-19T08:00:00Z",
+          "authorId": "usr-admin-1",
+          "authorName": "Danielle Eboa",
+          "authorRole": "admin",
+          "comment": "Qualification prioritaire niveau 1"
+        },
+        {
+          "status": "technicien_attribue",
+          "timestamp": "2026-10-19T08:15:00Z",
+          "authorId": "usr-admin-1",
+          "authorName": "Danielle Eboa",
+          "authorRole": "admin",
+          "comment": "Dispatch vers Fabrice Kamga (zone Bassa)"
+        },
+        {
+          "status": "mission_acceptee",
+          "timestamp": "2026-10-19T08:25:00Z",
+          "authorId": "usr-tech-1",
+          "authorName": "Fabrice Kamga",
+          "authorRole": "technicien",
+          "comment": "Accepté, départ sur site avec manomètres et azote"
+        },
+        {
+          "status": "en_cours",
+          "timestamp": "2026-10-19T09:00:00Z",
+          "authorId": "usr-tech-1",
+          "authorName": "Fabrice Kamga",
+          "authorRole": "technicien",
+          "comment": "Intervention débutée sur site"
+        }
+      ],
+      "createdAt": "2026-10-19T07:30:00Z",
+      "updatedAt": "2026-10-19T09:00:00Z"
+    },
+    {
+      "id": "req-003",
+      "reference": "GTEC-2026-I104",
+      "clientId": "usr-client-2",
+      "clientName": "Dr. Paul Manga",
+      "companyName": "AgroCam Industries SA",
+      "clientPhone": "+237 6 99 88 77 66",
+      "clientEmail": "direction@agrocam.cm",
+      "clientType": "entreprise",
+      "categoryId": "cat-it",
+      "categoryTitle": "Génie Informatique & Réseaux Télécoms",
+      "title": "Audit infrastructure réseau & déploiement baie de brassage 42U",
+      "description": "Réorganisation de la salle serveurs, remplacement des switchs obsolètes par des modèles PoE Gigabit et certification des 48 prises RJ45 Cat6A.",
+      "serviceType": "installation",
+      "urgency": "haute",
+      "city": "Douala",
+      "district": "Akwa",
+      "coordinates": {
+        "lat": 4.0535,
+        "lng": 9.6995
+      },
+      "preferredDate": "2026-10-24",
+      "preferredContact": "email",
+      "status": "technicien_attribue",
+      "assignedTechnicianId": "usr-tech-3",
+      "assignedTechnicianName": "Aïcha Bello",
+      "assignedTechnicianPhone": "+237 6 70 11 22 33",
+      "history": [
+        {
+          "status": "nouvelle",
+          "timestamp": "2026-10-18T14:10:00Z",
+          "authorId": "usr-client-2",
+          "authorName": "Dr. Paul Manga",
+          "authorRole": "client"
+        },
+        {
+          "status": "qualifiee",
+          "timestamp": "2026-10-18T16:00:00Z",
+          "authorId": "usr-admin-1",
+          "authorName": "Danielle Eboa",
+          "authorRole": "admin"
+        },
+        {
+          "status": "technicien_attribue",
+          "timestamp": "2026-10-19T10:00:00Z",
+          "authorId": "usr-admin-1",
+          "authorName": "Danielle Eboa",
+          "authorRole": "admin",
+          "comment": "Attribué à Aïcha Bello en attente de sa confirmation"
+        }
+      ],
+      "createdAt": "2026-10-18T14:10:00Z",
+      "updatedAt": "2026-10-19T10:00:00Z"
+    },
+    {
+      "id": "req-004",
+      "reference": "GTEC-2026-E115",
+      "clientId": "usr-client-1",
+      "clientName": "Martial Tene",
+      "clientPhone": "+237 6 77 12 34 56",
+      "clientEmail": "martial.t@gmail.com",
+      "clientType": "particulier",
+      "categoryId": "cat-solar",
+      "categoryTitle": "Génie Électrique & Solaire Photovoltaïque",
+      "title": "Installation chauffe-eau solaire 300L sous vide",
+      "description": "Remplacement d’un cumulus électrique énergivore par un chauffe-eau solaire compact sur toiture terrasse.",
+      "serviceType": "installation",
+      "urgency": "normale",
+      "city": "Yaoundé",
+      "district": "Bastos",
+      "coordinates": {
+        "lat": 3.882,
+        "lng": 11.515
+      },
+      "preferredDate": "2026-10-28",
+      "preferredContact": "whatsapp",
+      "status": "nouvelle",
+      "history": [
+        {
+          "status": "nouvelle",
+          "timestamp": "2026-10-19T11:45:00Z",
+          "authorId": "usr-client-1",
+          "authorName": "Martial Tene",
+          "authorRole": "client",
+          "comment": "Demande en attente de qualification par GTEC"
+        }
+      ],
+      "createdAt": "2026-10-19T11:45:00Z",
+      "updatedAt": "2026-10-19T11:45:00Z"
+    },
+    {
+      "id": "req-005",
+      "reference": "GTEC-2026-S205",
+      "clientId": "usr-client-2",
+      "clientName": "Dr. Paul Manga",
+      "companyName": "AgroCam Industries SA",
+      "clientPhone": "+237 6 99 88 77 66",
+      "clientEmail": "direction@agrocam.cm",
+      "clientType": "entreprise",
+      "categoryId": "cat-solar",
+      "categoryTitle": "Génie Électrique & Solaire Photovoltaïque",
+      "title": "Centrale Solaire Autonome 10kVA Entrepôt Logistique Portuaire",
+      "description": "Déploiement d’un champ photovoltaïque de 18 panneaux 550W et batterie lithium 15kWh pour sécuriser la chaîne du froid en transit.",
+      "serviceType": "installation",
+      "urgency": "haute",
+      "city": "Kribi",
+      "district": "Zone Portuaire",
+      "coordinates": {
+        "lat": 2.939,
+        "lng": 9.91
+      },
+      "preferredDate": "2026-10-22",
+      "preferredContact": "telephone",
+      "status": "en_cours",
+      "assignedTechnicianId": "usr-tech-1",
+      "assignedTechnicianName": "Fabrice Kamga",
+      "assignedTechnicianPhone": "+237 6 51 22 33 44",
+      "scheduledDate": "2026-10-22",
+      "scheduledTimeSlot": "Journée entière",
+      "history": [
+        {
+          "status": "nouvelle",
+          "timestamp": "2026-10-16T09:00:00Z",
+          "authorId": "usr-client-2",
+          "authorName": "Dr. Paul Manga",
+          "authorRole": "client"
+        },
+        {
+          "status": "mission_acceptee",
+          "timestamp": "2026-10-17T11:00:00Z",
+          "authorId": "usr-tech-1",
+          "authorName": "Fabrice Kamga",
+          "authorRole": "technicien"
+        },
+        {
+          "status": "en_cours",
+          "timestamp": "2026-10-19T08:00:00Z",
+          "authorId": "usr-tech-1",
+          "authorName": "Fabrice Kamga",
+          "authorRole": "technicien",
+          "comment": "Pose des rails et onduleurs en cours sur le toit de l’entrepôt"
+        }
+      ],
+      "createdAt": "2026-10-16T09:00:00Z",
+      "updatedAt": "2026-10-19T08:00:00Z"
+    },
+    {
+      "id": "req-006",
+      "reference": "GTEC-2026-F312",
+      "clientId": "usr-client-1",
+      "clientName": "Martial Tene",
+      "clientPhone": "+237 6 77 12 34 56",
+      "clientEmail": "martial.t@gmail.com",
+      "clientType": "particulier",
+      "categoryId": "cat-hvac",
+      "categoryTitle": "Froid Industriel & Climatisation Haute Performance",
+      "title": "Maintenance Préventive Climatisation VRV Bâtiment Tertiaire",
+      "description": "Nettoyage des échangeurs, contrôle d’étanchéité azote et recharge gaz écologique R410A sur 6 unités intérieures.",
+      "serviceType": "maintenance",
+      "urgency": "normale",
+      "city": "Yaoundé",
+      "district": "Mvan",
+      "coordinates": {
+        "lat": 3.821,
+        "lng": 11.51
+      },
+      "preferredDate": "2026-10-21",
+      "preferredContact": "whatsapp",
+      "status": "en_cours",
+      "assignedTechnicianId": "usr-tech-2",
+      "assignedTechnicianName": "Samuel Ndongo",
+      "assignedTechnicianPhone": "+237 6 58 44 55 66",
+      "scheduledDate": "2026-10-21",
+      "scheduledTimeSlot": "Matinée (08h - 12h)",
+      "history": [
+        {
+          "status": "nouvelle",
+          "timestamp": "2026-10-15T10:00:00Z",
+          "authorId": "usr-client-1",
+          "authorName": "Martial Tene",
+          "authorRole": "client"
+        },
+        {
+          "status": "mission_acceptee",
+          "timestamp": "2026-10-16T08:30:00Z",
+          "authorId": "usr-tech-2",
+          "authorName": "Samuel Ndongo",
+          "authorRole": "technicien"
+        },
+        {
+          "status": "en_cours",
+          "timestamp": "2026-10-19T09:15:00Z",
+          "authorId": "usr-tech-2",
+          "authorName": "Samuel Ndongo",
+          "authorRole": "technicien",
+          "comment": "Contrôle des pressions frigorifiques et détection de fuite"
+        }
+      ],
+      "createdAt": "2026-10-15T10:00:00Z",
+      "updatedAt": "2026-10-19T09:15:00Z"
+    },
+    {
+      "id": "req-007",
+      "reference": "GTEC-2026-E440",
+      "clientId": "usr-client-2",
+      "clientName": "Dr. Paul Manga",
+      "companyName": "AgroCam Industries SA",
+      "clientPhone": "+237 6 99 88 77 66",
+      "clientEmail": "direction@agrocam.cm",
+      "clientType": "entreprise",
+      "categoryId": "cat-solar",
+      "categoryTitle": "Génie Électrique & Solaire Photovoltaïque",
+      "title": "Audit Thermographique & Réfection TGBT Usine de Transformation",
+      "description": "Échauffement détecté sur jeu de barres principal cuivre 1000A. Resserrage dynamométrique, remplacement parafoudre T1+T2.",
+      "serviceType": "depannage",
+      "urgency": "haute",
+      "city": "Edéa",
+      "district": "Zone Industrielle",
+      "coordinates": {
+        "lat": 3.8,
+        "lng": 10.1333
+      },
+      "preferredDate": "2026-10-23",
+      "preferredContact": "telephone",
+      "status": "mission_acceptee",
+      "assignedTechnicianId": "usr-tech-1",
+      "assignedTechnicianName": "Fabrice Kamga",
+      "assignedTechnicianPhone": "+237 6 51 22 33 44",
+      "scheduledDate": "2026-10-23",
+      "scheduledTimeSlot": "Après-midi (13h - 17h)",
+      "history": [
+        {
+          "status": "nouvelle",
+          "timestamp": "2026-10-18T16:00:00Z",
+          "authorId": "usr-client-2",
+          "authorName": "Dr. Paul Manga",
+          "authorRole": "client"
+        },
+        {
+          "status": "mission_acceptee",
+          "timestamp": "2026-10-19T11:00:00Z",
+          "authorId": "usr-tech-1",
+          "authorName": "Fabrice Kamga",
+          "authorRole": "technicien"
+        }
+      ],
+      "createdAt": "2026-10-18T16:00:00Z",
+      "updatedAt": "2026-10-19T11:00:00Z"
+    },
+    {
+      "id": "req-008",
+      "reference": "GTEC-2026-I518",
+      "clientId": "usr-client-2",
+      "clientName": "Dr. Paul Manga",
+      "companyName": "AgroCam Industries SA",
+      "clientPhone": "+237 6 99 88 77 66",
+      "clientEmail": "direction@agrocam.cm",
+      "clientType": "entreprise",
+      "categoryId": "cat-it",
+      "categoryTitle": "Génie Informatique & Réseaux Télécoms",
+      "title": "Interconnexion Fibre Optique & Baie Serveur Sécurisée",
+      "description": "Liaison optique inter-bâtiments 10Gbps monomode avec coffret de raccordement et switch niveau 3.",
+      "serviceType": "installation",
+      "urgency": "normale",
+      "city": "Bafoussam",
+      "district": "Centre Commercial",
+      "coordinates": {
+        "lat": 5.4778,
+        "lng": 10.4176
+      },
+      "preferredDate": "2026-10-25",
+      "preferredContact": "email",
+      "status": "en_cours",
+      "assignedTechnicianId": "usr-tech-3",
+      "assignedTechnicianName": "Aïcha Bello",
+      "assignedTechnicianPhone": "+237 6 70 11 22 33",
+      "scheduledDate": "2026-10-25",
+      "scheduledTimeSlot": "Journée entière",
+      "history": [
+        {
+          "status": "nouvelle",
+          "timestamp": "2026-10-14T11:00:00Z",
+          "authorId": "usr-client-2",
+          "authorName": "Dr. Paul Manga",
+          "authorRole": "client"
+        },
+        {
+          "status": "en_cours",
+          "timestamp": "2026-10-19T10:00:00Z",
+          "authorId": "usr-tech-3",
+          "authorName": "Aïcha Bello",
+          "authorRole": "technicien",
+          "comment": "Soudures de fibres optiques par fusion en cours"
+        }
+      ],
+      "createdAt": "2026-10-14T11:00:00Z",
+      "updatedAt": "2026-10-19T10:00:00Z"
+    },
+    {
+      "id": "req-009",
+      "reference": "GTEC-2026-S620",
+      "clientId": "usr-client-2",
+      "clientName": "Dr. Paul Manga",
+      "companyName": "AgroCam Industries SA",
+      "clientPhone": "+237 6 99 88 77 66",
+      "clientEmail": "direction@agrocam.cm",
+      "clientType": "entreprise",
+      "categoryId": "cat-solar",
+      "categoryTitle": "Génie Électrique & Solaire Photovoltaïque",
+      "title": "Pompage Solaire Agricole Haute Capacité 15kWc",
+      "description": "Installation pompe immergée solaire débit 45m³/h avec variateur solaire et protection contre la marche à sec pour irrigation.",
+      "serviceType": "installation",
+      "urgency": "normale",
+      "city": "Garoua",
+      "district": "Bénoué",
+      "coordinates": {
+        "lat": 9.3,
+        "lng": 13.4
+      },
+      "preferredDate": "2026-10-29",
+      "preferredContact": "whatsapp",
+      "status": "planifiee",
+      "assignedTechnicianId": "usr-tech-1",
+      "assignedTechnicianName": "Fabrice Kamga",
+      "assignedTechnicianPhone": "+237 6 51 22 33 44",
+      "scheduledDate": "2026-10-29",
+      "scheduledTimeSlot": "Journée entière",
+      "history": [
+        {
+          "status": "nouvelle",
+          "timestamp": "2026-10-17T15:00:00Z",
+          "authorId": "usr-client-2",
+          "authorName": "Dr. Paul Manga",
+          "authorRole": "client"
+        },
+        {
+          "status": "planifiee",
+          "timestamp": "2026-10-19T08:00:00Z",
+          "authorId": "usr-admin-1",
+          "authorName": "Danielle Eboa",
+          "authorRole": "admin",
+          "comment": "Expédition matériel solaire par fret ferroviaire vers Garoua"
+        }
+      ],
+      "createdAt": "2026-10-17T15:00:00Z",
+      "updatedAt": "2026-10-19T08:00:00Z"
+    }
+  ],
+  "quotes": [
+    {
+      "id": "q-001",
+      "requestId": "req-001",
+      "requestReference": "GTEC-2026-E042",
+      "clientId": "usr-client-1",
+      "title": "Devis Kit Solaire Hybride GTEC Pro 5kVA",
+      "items": [
+        {
+          "id": "qi-1",
+          "description": "Onduleur Hybride Pur Sinus 5kVA 48V MPPT GTEC",
+          "quantity": 1,
+          "unitPrice": 850000,
+          "totalPrice": 850000
+        },
+        {
+          "id": "qi-2",
+          "description": "Modules Solaires Monocristallins 550W Tier 1",
+          "quantity": 8,
+          "unitPrice": 125000,
+          "totalPrice": 1000000
+        },
+        {
+          "id": "qi-3",
+          "description": "Batterie Lithium LiFePO4 48V 100Ah (4.8kWh)",
+          "quantity": 2,
+          "unitPrice": 1100000,
+          "totalPrice": 2200000
+        },
+        {
+          "id": "qi-4",
+          "description": "Coffret parafoudre DC/AC, câbles solaires & pose certifiée",
+          "quantity": 1,
+          "unitPrice": 450000,
+          "totalPrice": 450000
+        }
+      ],
+      "subtotal": 4500000,
+      "taxRate": 0.1925,
+      "taxAmount": 866250,
+      "totalAmount": 5366250,
+      "currency": "FCFA",
+      "validUntil": "2026-04-30",
+      "status": "accepte",
+      "createdAt": "2026-03-12T14:00:00Z",
+      "acceptedAt": "2026-03-14T10:00:00Z"
+    },
+    {
+      "id": "q-002",
+      "requestId": "req-003",
+      "requestReference": "GTEC-2026-I104",
+      "clientId": "usr-client-2",
+      "title": "Devis Réfection Baie Réseau & Câblage Cat6A",
+      "items": [
+        {
+          "id": "qi-11",
+          "description": "Baie de brassage 42U avec ventilation thermo-régulée",
+          "quantity": 1,
+          "unitPrice": 480000,
+          "totalPrice": 480000
+        },
+        {
+          "id": "qi-12",
+          "description": "Switch Manageable 24 ports Gigabit PoE+ L2",
+          "quantity": 2,
+          "unitPrice": 320000,
+          "totalPrice": 640000
+        },
+        {
+          "id": "qi-13",
+          "description": "Bandeaux de brassage 24 ports + jarretières blindées",
+          "quantity": 2,
+          "unitPrice": 65000,
+          "totalPrice": 130000
+        },
+        {
+          "id": "qi-14",
+          "description": "Main d’œuvre repérage, tirage fibre et recertification",
+          "quantity": 1,
+          "unitPrice": 350000,
+          "totalPrice": 350000
+        }
+      ],
+      "subtotal": 1600000,
+      "taxRate": 0.1925,
+      "taxAmount": 308000,
+      "totalAmount": 1908000,
+      "currency": "FCFA",
+      "validUntil": "2026-11-15",
+      "status": "envoye",
+      "createdAt": "2026-10-18T18:00:00Z"
+    }
+  ],
+  "interventionReports": [
+    {
+      "id": "rep-001",
+      "requestId": "req-001",
+      "requestReference": "GTEC-2026-E042",
+      "technicianId": "usr-tech-1",
+      "technicianName": "Fabrice Kamga",
+      "dateCompleted": "2026-03-26",
+      "workDescription": "Installation de la structure aluminium sur toiture tuile, pose des 8 panneaux orientés plein Sud 12°. Raccordement du coffret de protection DC, liaison onduleur et mise en service des batteries lithium.",
+      "partsReplaced": "Fusibles gPV 1000V 20A neufs, connecteurs MC4 étanches, sectionneur 63A",
+      "hoursSpent": 7.5,
+      "recommendations": "Nettoyage des panneaux à l’eau douce tous les 3 mois en saison sèche pour préserver 98% de rendement. Surveillance de la charge sur l’application smartphone.",
+      "safetyComplianceChecked": true,
+      "validatedByAdmin": true,
+      "createdAt": "2026-03-26T16:30:00Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-1",
+      "userId": "usr-admin-1",
+      "title": "Nouvelle demande client reçue",
+      "message": "Martial Tene a déposé la demande GTEC-2026-E115 pour un chauffe-eau solaire à Bastos.",
+      "type": "info",
+      "link": "/admin",
+      "read": false,
+      "createdAt": "2026-10-19T11:46:00Z"
+    },
+    {
+      "id": "notif-2",
+      "userId": "usr-tech-3",
+      "title": "Nouvelle mission assignée",
+      "message": "La mission GTEC-2026-I104 (Baie réseau AgroCam) vous a été assignée. Veuillez confirmer.",
+      "type": "alert",
+      "link": "/technicien",
+      "read": false,
+      "createdAt": "2026-10-19T10:01:00Z"
+    },
+    {
+      "id": "notif-3",
+      "userId": "usr-client-2",
+      "title": "Technicien en route",
+      "message": "Fabrice Kamga a démarré l’intervention d’urgence sur votre chambre froide Bassa (GTEC-2026-F089).",
+      "type": "success",
+      "link": "/client",
+      "read": false,
+      "createdAt": "2026-10-19T09:01:00Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "log-1",
+      "timestamp": "2026-10-19T10:00:00Z",
+      "userId": "usr-admin-1",
+      "userName": "Danielle Eboa",
+      "userRole": "admin",
+      "action": "ASSIGN_MISSION",
+      "details": "Attribution de la mission GTEC-2026-I104 au technicien Aïcha Bello"
+    },
+    {
+      "id": "log-2",
+      "timestamp": "2026-10-19T09:00:00Z",
+      "userId": "usr-tech-1",
+      "userName": "Fabrice Kamga",
+      "userRole": "technicien",
+      "action": "START_INTERVENTION",
+      "details": "Démarrage de l’intervention d’urgence GTEC-2026-F089 (Bassa)"
+    }
+  ]
+}
