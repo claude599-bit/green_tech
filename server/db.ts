@@ -1,4 +1,5 @@
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 
 export interface User {
@@ -160,7 +161,12 @@ export interface DatabaseSchema {
   auditLogs: AuditLog[];
 }
 
-const DB_FILE = path.resolve(process.cwd(), 'database.json');
+const SEED_FILE = path.resolve(process.cwd(), 'database.json');
+const DB_FILE = process.env.GTEC_DB_PATH
+  ? path.resolve(process.env.GTEC_DB_PATH)
+  : process.env.VERCEL
+    ? path.join(os.tmpdir(), 'gtec-database.json')
+    : SEED_FILE;
 
 const INITIAL_DATA: DatabaseSchema = {
   users: [
@@ -922,10 +928,16 @@ export class Database {
 
   public static get(): DatabaseSchema {
     if (!Database.data) {
-      if (fs.existsSync(DB_FILE)) {
+      const sourceFile = fs.existsSync(DB_FILE)
+        ? DB_FILE
+        : fs.existsSync(SEED_FILE)
+          ? SEED_FILE
+          : null;
+      if (sourceFile) {
         try {
-          const raw = fs.readFileSync(DB_FILE, 'utf-8');
+          const raw = fs.readFileSync(sourceFile, 'utf-8');
           Database.data = JSON.parse(raw);
+          if (sourceFile !== DB_FILE) Database.save();
         } catch {
           Database.data = JSON.parse(JSON.stringify(INITIAL_DATA));
           Database.save();

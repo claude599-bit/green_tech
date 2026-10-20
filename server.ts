@@ -1,10 +1,11 @@
 import express, { Request, Response, NextFunction } from 'express';
 import cookieParser from 'cookie-parser';
+import crypto from 'crypto';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
-import { Database, User, ServiceRequest, Quote, InterventionReport, Notification, AuditLog, resolveGpsCoordinates } from './server/db.js';
-import { generateGtecResponse } from './server/gemini.js';
+import { Database, User, ServiceRequest, Quote, InterventionReport, Notification, AuditLog, resolveGpsCoordinates } from './server/db';
+import { generateGtecResponse } from './server/gemini';
 
 dotenv.config();
 
@@ -17,17 +18,50 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json({ limit: '10mb' }));
 app.use(cookieParser());
 
-// In-memory session store (token -> userId)
-const sessions = new Map<string, string>();
+// Stateless signed tokens so authentication works across serverless instances.
+// Set GTEC_SESSION_SECRET in production to keep tokens unforgeable.
+const SESSION_SECRET = process.env.GTEC_SESSION_SECRET || 'gtec-local-development-secret';
+const TOKEN_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 
-// Seed default sessions for ease of testing
-sessions.set('token-admin', 'usr-admin-1');
-sessions.set('token-client-1', 'usr-client-1');
-sessions.set('token-client-2', 'usr-client-2');
-sessions.set('token-tech-1', 'usr-tech-1');
-sessions.set('token-tech-2', 'usr-tech-2');
-sessions.set('token-tech-3', 'usr-tech-3');
-sessions.set('token-tech-pending', 'usr-tech-pending');
+if (process.env.NODE_ENV === 'production' && !process.env.GTEC_SESSION_SECRET) {
+  console.warn('GTEC_SESSION_SECRET is not set: authentication tokens use the default development secret.');
+}
+
+// Seed default tokens for ease of testing (kept for local demos only)
+const LEGACY_TOKENS = new Map<string, string>([
+  ['token-admin', 'usr-admin-1'],
+  ['token-client-1', 'usr-client-1'],
+  ['token-client-2', 'usr-client-2'],
+  ['token-tech-1', 'usr-tech-1'],
+  ['token-tech-2', 'usr-tech-2'],
+  ['token-tech-3', 'usr-tech-3'],
+  ['token-tech-pending', 'usr-tech-pending'],
+]);
+
+function signSessionToken(userId: string): string {
+  const payload = `${userId}|${Date.now()}`;
+  const encoded = Buffer.from(payload, 'utf-8').toString('base64url');
+  const signature = crypto.createHmac('sha256', SESSION_SECRET).update(encoded).digest('base64url');
+  return `${encoded}.${signature}`;
+}
+
+function resolveSessionToken(token: string): string | null {
+  if (LEGACY_TOKENS.has(token)) return LEGACY_TOKENS.get(token)!;
+
+  const [encoded, signature] = token.split('.');
+  if (!encoded || !signature) return null;
+
+  const expected = crypto.createHmac('sha256', SESSION_SECRET).update(encoded).digest('base64url');
+  const provided = Buffer.from(signature);
+  const expectedBuffer = Buffer.from(expected);
+  if (provided.length !== expectedBuffer.length || !crypto.timingSafeEqual(provided, expectedBuffer)) {
+    return null;
+  }
+
+  const [userId, issuedAt] = Buffer.from(encoded, 'base64url').toString('utf-8').split('|');
+  if (!userId || !issuedAt || Date.now() - Number(issuedAt) > TOKEN_TTL_MS) return null;
+  return userId;
+}
 
 // Helper to authenticate user from token or header
 function getAuthenticatedUser(req: Request): User | null {
@@ -38,20 +72,13 @@ function getAuthenticatedUser(req: Request): User | null {
       : null) ||
     (req.headers['x-gtec-token'] as string);
 
-  if (token && sessions.has(token)) {
-    const userId = sessions.get(token)!;
-    const db = Database.get();
-    return db.users.find((u) => u.id === userId) || null;
-  }
+  if (!token) return null;
 
-  // Fallback support for direct user header during development test switcher
-  const directUserId = req.headers['x-user-id'] as string;
-  if (directUserId) {
-    const db = Database.get();
-    return db.users.find((u) => u.id === directUserId) || null;
-  }
+  const userId = resolveSessionToken(token);
+  if (!userId) return null;
 
-  return null;
+  const db = Database.get();
+  return db.users.find((u) => u.id === userId) || null;
 }
 
 function requireAuth(req: Request, res: Response, next: NextFunction) {
@@ -129,8 +156,7 @@ app.post('/api/auth/login', (req: Request, res: Response) => {
     return res.status(401).json({ error: 'Identifiants invalides. Veuillez vérifier vos accès.' });
   }
 
-  const token = `token-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-  sessions.set(token, user.id);
+  const token = signSessionToken(user.id);
 
   res.cookie('gtec_token', token, {
     httpOnly: true,
@@ -183,8 +209,7 @@ app.post('/api/auth/register', (req: Request, res: Response) => {
   db.users.push(newUser);
   Database.save();
 
-  const token = `token-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-  sessions.set(token, newUser.id);
+  const token = signSessionToken(newUser.id);
 
   res.cookie('gtec_token', token, {
     httpOnly: true,
@@ -213,9 +238,7 @@ app.post('/api/auth/register', (req: Request, res: Response) => {
   return res.json({ success: true, token, user: safeUser });
 });
 
-app.post('/api/auth/logout', (req: Request, res: Response) => {
-  const token = req.cookies?.gtec_token || req.headers.authorization?.slice(7);
-  if (token) sessions.delete(token);
+app.post('/api/auth/logout', (_req: Request, res: Response) => {
   res.clearCookie('gtec_token');
   return res.json({ success: true });
 });
@@ -236,8 +259,7 @@ app.post('/api/auth/switch-demo', (req: Request, res: Response) => {
     return res.status(404).json({ error: 'Profil de démonstration introuvable.' });
   }
 
-  const token = `token-demo-${user.id}`;
-  sessions.set(token, user.id);
+  const token = signSessionToken(user.id);
 
   res.cookie('gtec_token', token, {
     httpOnly: true,
@@ -895,6 +917,10 @@ async function startServer() {
   });
 }
 
-startServer().catch((err) => {
-  console.error('Failed to start GTEC server:', err);
-});
+if (!process.env.VERCEL) {
+  startServer().catch((err) => {
+    console.error('Failed to start GTEC server:', err);
+  });
+}
+
+export default app;

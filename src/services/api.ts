@@ -34,7 +34,6 @@ export function setStoredUser(user: User | null) {
 
 async function request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const token = getStoredToken();
-  const cachedUser = getStoredUser();
 
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
@@ -44,9 +43,6 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
   if (token) {
     headers['Authorization'] = `Bearer ${token}`;
     headers['x-gtec-token'] = token;
-  }
-  if (cachedUser) {
-    headers['x-user-id'] = cachedUser.id;
   }
 
   const response = await fetch(endpoint, {
